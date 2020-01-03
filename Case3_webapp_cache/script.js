@@ -43,7 +43,7 @@ $(document).ready(function() {
 			var weather_dict = {1:"clear-day",2:"partly-cloudy-day",3:"partly-cloudy-day",4:"partly-cloudy-day",5:"cloudy",6:"cloudy",7:"cloudy",8:"rain",9:"rain"};
 			
 			// console.log(weather_value_1,weather_value_2,weather_value_3);
-			var skycons = new Skycons({"color": "#A9DD9B"});
+			var skycons = new Skycons({"color": "#F1BD23"});
 			skycons.set("weather-icon", weather_dict[weather_value_1]);
 			skycons.set("weather-icon-day2", weather_dict[weather_value_1]);
 			skycons.set("weather-icon-day3", weather_dict[weather_value_2]);
