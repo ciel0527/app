@@ -10,21 +10,41 @@ $(document).ready(function() {
 	
 	function getTaiwanWeather(city_name) {
 		//Weather Forecast Open Data API
-		var Your_Weather_API_key = "CWB-DF9C065C-4BE1-4E19-85B6-3496DF3DA85D";  //IMPORTANT, replace it with your weather API Authkey 中央氣象局授權碼
+		var Your_Weather_API_key = "CWB-A53C0400-B3E7-452C-84E4-98EC89369BC5";  //IMPORTANT, replace it with your weather API Authkey 中央氣象局授權碼
 		//中央氣象局 F-C0032-001 一般天氣預報-今明 36 小時天氣預報資料 API 全部縣市
-		var url_all = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=" + Your_Weather_API_key + "&format=JSON";
+		var url_all = "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-B0053-031?Authorization=" + Your_Weather_API_key + "&format=JSON";
 		//中央氣象局 F-C0032-001 一般天氣預報-今明 36 小時天氣預報資料 API by 縣市
-		var url_city = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=" + Your_Weather_API_key + "&format=JSON&locationName=";
+		var url_city = "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-B0053-031?Authorization=" + Your_Weather_API_key + "&format=JSON&locationName=";
 		var jqxhr = $.getJSON(url_city + city_name, function() {
-			// console.log("Get Taiwan weather success.");
 		})
 		.done(function(arr) {
-			console.log("The second success.");
+			var test=city(city_name);
+			function city(city_name){
+				if ( city_name =="中央尖山" ) 
+				{
+					return test =0;
+				}
+			   	else if( city_name=="巴巴山" ) {
+					return test =1;
+				}
+				else if( city_name=="南湖大山" ) {
+					return test =2;
+				}
+				else if( city_name=="南湖大山南峰" ) {
+					return test =3;
+				}
+				else if( city_name=="雪山北峰" ) {
+					return test =4;
+				}
+				else {
+					return test =5;
+				}
+			}
+			console.log(test);
 			// var outStr = JSON.stringify(arr);
-			
-			var time_1 = arr.records.location[0].weatherElement[0].time[0].startTime.substr(5,8).replace("-","/") + "時";
-			var time_2 = arr.records.location[0].weatherElement[0].time[1].startTime.substr(5,8).replace("-","/") + "時";
-			var time_3 = arr.records.location[0].weatherElement[0].time[2].startTime.substr(5,8).replace("-","/") + "時";
+			var time_1 = arr.cwbopendata.dataset.locations.location[test].weatherElement[0].time[0].startTime.substr(5,8).replace("-","/") + "時";
+			var time_2 = arr.cwbopendata.dataset.locations.location[test].weatherElement[0].time[1].startTime.substr(5,8).replace("-","/") + "時";
+			var time_3 = arr.cwbopendata.dataset.locations.location[test].weatherElement[0].time[2].startTime.substr(5,8).replace("-","/") + "時";
 			//主時間 Day 2, 3, 4 時間資料 #date, #day2, day3, day4
 			$("#city").text(city_name);
 			$("#date").text(time_1.substr(0,5));
@@ -33,11 +53,11 @@ $(document).ready(function() {
 			$("#day4").text(time_3);
 			
 			//天氣概況 #weather-description
-			var weather_1 = arr.records.location[0].weatherElement[0].time[0].parameter.parameterName;
-			var weather_value_1 = arr.records.location[0].weatherElement[0].time[0].parameter.parameterValue;
-			var weather_value_2 = arr.records.location[0].weatherElement[0].time[1].parameter.parameterValue;
-			var weather_value_3 = arr.records.location[0].weatherElement[0].time[2].parameter.parameterValue;
-			$("#weather-description").text(weather_1);
+			var weather_1 = arr.cwbopendata.dataset.locations.location[test].weatherElement[12].time[0].elementValue[0].value;
+   			var weather_value_1 = arr.cwbopendata.dataset.locations.location[test].weatherElement[12].time[0].elementValue[1].value.substr(1,1);
+   			var weather_value_2 = arr.cwbopendata.dataset.locations.location[test].weatherElement[12].time[1].elementValue[1].value.substr(1,1);
+   			var weather_value_3 = arr.cwbopendata.dataset.locations.location[test].weatherElement[12].time[2].elementValue[1].value.substr(1,1);
+            $("#weather-description").text(weather_1);
 			//skycons.set("weather-icon", icon); https://github.com/darkskyapp/skycons {"clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind", "fog"}
 			//Use dictionary to map weather icon (ForecastElement.PDF)
 			var weather_dict = {1:"clear-day",2:"partly-cloudy-day",3:"partly-cloudy-day",4:"partly-cloudy-day",5:"cloudy",6:"cloudy",7:"cloudy",8:"rain",9:"rain"};
@@ -51,25 +71,25 @@ $(document).ready(function() {
 			skycons.play();
 			
 			//舒適度 #feels-like
-			var fl_1 = arr.records.location[0].weatherElement[3].time[0].parameter.parameterName;
+			var fl_1 = arr.cwbopendata.dataset.locations.location[0].parameterSet.parameter.parameterName;
 			$("#feels-like").text(fl_1);
 			
 			//溫度 #temp #day2-high-low, day3-high-low, day4-high-low
-			var minT_1 = arr.records.location[0].weatherElement[2].time[0].parameter.parameterName;
-			var minT_2 = arr.records.location[0].weatherElement[2].time[1].parameter.parameterName;
-			var minT_3 = arr.records.location[0].weatherElement[2].time[2].parameter.parameterName;
-			var maxT_1 = arr.records.location[0].weatherElement[4].time[0].parameter.parameterName;
-			var maxT_2 = arr.records.location[0].weatherElement[4].time[1].parameter.parameterName;
-			var maxT_3 = arr.records.location[0].weatherElement[4].time[2].parameter.parameterName;
+			var minT_1 = arr.cwbopendata.dataset.locations.location[test].weatherElement[0].time[0].elementValue.value;
+			var minT_2 = arr.cwbopendata.dataset.locations.location[test].weatherElement[0].time[1].elementValue.value;
+			var minT_3 = arr.cwbopendata.dataset.locations.location[test].weatherElement[0].time[2].elementValue.value;
+			var maxT_1 = arr.cwbopendata.dataset.locations.location[test].weatherElement[0].time[0].elementValue.value;
+			var maxT_2 = arr.cwbopendata.dataset.locations.location[test].weatherElement[0].time[1].elementValue.value;
+			var maxT_3 = arr.cwbopendata.dataset.locations.location[test].weatherElement[0].time[2].elementValue.value;
 			$("#temp").text(Math.round((Number(minT_1) + Number(maxT_1)) / 2) + "°");
 			$("#day2-high-low").text(minT_1 + "~" + maxT_1 + "°C");
 			$("#day3-high-low").text(minT_2 + "~" + maxT_2 + "°C");
 			$("#day4-high-low").text(minT_3 + "~" + maxT_3 + "°C");
 			
 			//降雨機率 #day2-precip, day3-precip, day4-precip
-			var rain_1 = arr.records.location[0].weatherElement[1].time[0].parameter.parameterName;
-			var rain_2 = arr.records.location[0].weatherElement[1].time[1].parameter.parameterName;
-			var rain_3 = arr.records.location[0].weatherElement[1].time[2].parameter.parameterName;
+			var rain_1 = arr.cwbopendata.dataset.locations.location[0].weatherElement[1].time[0].elementValue.value;
+			var rain_2 = arr.cwbopendata.dataset.locations.location[0].weatherElement[1].time[1].elementValue.valuee;
+			var rain_3 = arr.cwbopendata.dataset.locations.location[0].weatherElement[1].time[2].elementValue.value;
 			$("#day2-precip").text(rain_1 + "%");
 			$("#day3-precip").text(rain_2 + "%");
 			$("#day4-precip").text(rain_3 + "%");
