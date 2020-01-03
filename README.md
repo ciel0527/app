@@ -1,41 +1,30 @@
-﻿# APP Programming and Design - Course Case
-國立高雄科技大學智慧商務系-《APP 程式開發與設計》課程案例
+﻿# Git
 
-National Kaohsiung University of Science and Technology, Department of Intelligent Commerce
+## 指令
+#### 設定使用者：
+* git config --global user.name "<Your Name>"
+* git config --global user.email "<your@gmail.com>"
+* git remote add origin <您的 GitHub repository URL>   
+* git config --list   查看git的設定
 
-by Sean Lu
-## Table of Contents
-### Case0: CSS Animations and Variables
-#### 案例學習內容：
-* Media Query & RWD 控制
-* CSS Animations - CSS 動畫
-* CSS Variables - CSS 變數控制
-* HTML5 Web Storage
+#### 新增 repository：
+* mkdir my_git  
+  建立一個名為 my_git 的資料夾
+* cd my_git     
+  切換至 my_git 資料夾
+* git init      
+  初始化這個目錄，讓git對這個資料夾進行版本控制，建立git repository檔案庫
+* ls           
+  看一下資料夾內有什麼
 
-### Case1: Open Data & JSON
-#### 案例學習內容：
-* Open Data Access 取得政府開放資料
-* JSON Data 前端取得與處理
-* [Ajax, jQuery getJSON() 方法](http://seansharingblog.blogspot.com/2018/04/javascript-get-json.html)
-* Server side data process using Python and PHP Server 端取得和處理
-* Crontab scheduling 排程
-
-### Case2: Bootstrap Weather APP
-#### 案例學習內容：
-* Bootstrap Framework
-* Open Data & JSON with [中央氣象局氣象資料開放平臺](https://opendata.cwb.gov.tw/index)
-* jQuery Events
-* HTML5 geolocation.getCurrentPosition()
-* Reverse geocoding with [LocationIQ API](https://locationiq.com/) & [Google API](https://developers.google.com/maps/documentation/geocoding/intro)
-* 其他： [環境資源資料開放平臺](https://opendata.epa.gov.tw/)、[公共運輸整合資訊流通服務平臺 PTX](http://ptx.transportdata.tw/PTX/)
-
-### Case3: Web APP Deployment
-#### 案例學習內容：
-* HTML5 Application Cache
-
-
-### Case4: Cordova Deployment
-#### 案例學習內容：
-* Cordova Installation
-* Create a App project with Cordova
-* [Deploy a jQuery Mobile App on Android Phone](http://seansharingblog.blogspot.com/2017/06/cordova-jquery-mobile-web-app-android.html)
+#### 增加檔案：
+* git status          
+  顯示目前工作目錄的檔案狀態
+* git add FILE   
+  把FILE加入暫存區
+* git commit -m " "  
+  留下 commit 訊息
+* git log 
+  查看提交 commit 的歷史記錄
+* git push -u origin master    
+  將本地檔案庫上傳 
