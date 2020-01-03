@@ -28,7 +28,7 @@
 <div data-role="page" id="page1" data-theme="a">
     <div data-role="header">
         <a href="#page2" class="ui-btn ui-corner-all ui-shadow ui-icon-arrow-u-r ui-btn-icon-right">第2頁</a>
-        <h1>Home</h1>
+        <h1>APP Homework</h1>
         <a href="#page_o1" class="ui-btn ui-corner-all ui-shadow ui-icon-gear ui-btn-icon-right">Option</a>
         <div data-role="navbar">
 		    <ul>
@@ -43,28 +43,24 @@
 		    </ul>
         </div>
     </div>
-    <div data-role="main" class="ui-content">
-        <p>Home-以Navigation Bars按鈕呈現</p>
-    </div>
-
-    <div data-role="footer">
-        <h1>功課</h1>
-    </div>
 </div>
 
 <!-- #page_o1 設定 Option page -->
 <div data-role="page" data-dialog="true" id="page_o1">
     <div data-role="header">
-        <h1>App 版本介紹</h1>
-    </div>
-    
+        <h1>App介紹</h1>
+    </div> 
     <div data-role="main" class="ui-content">
-        <img src="http://www.pwrnewmedia.com/2013/soleil_provence/originalfiles/sun%20icon.png" alt="Smiley face" height="90" width="90"><br>
+        <div class="row">
+			<div class="col-xs-3 valign" align="center">
+				<img src="http://www.pwrnewmedia.com/2013/soleil_provence/originalfiles/sun%20icon.png" alt="Smiley face" height="90" width="90">
+            </div>
+            <div class="col-xs-9 valign" align="right">
+                老師，我有修改。
+                請別當我，我只是太累所以老是在睡覺抱歉。
+            </div>
+		</div>
         <a href="#" class="ui-btn" data-rel="back">Go back</a>
-    </div>
-    
-    <div data-role="footer">
-	    <h1>功課</h1>
     </div>
 </div>
 
@@ -72,12 +68,12 @@
 <div data-role="page" id="page2" data-theme="b">
     <div data-role="header">
         <a href="#page1" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left" data-direction="reverse">Home</a>
-        <h1>JQuery Mobile Web App-第二頁</h1>
+        <h1>第二頁</h1>
         <a href="#page_o1" class="ui-btn ui-corner-all ui-shadow ui-icon-gear ui-btn-icon-right">設定</a>
     </div>
 
     <div data-role="main" class="ui-content">
-        <p>第二頁-以垂直按鈕呈現</p>
+        <p>第二頁</p>
         <a href="#pageF1" class="ui-btn ui-corner-all ui-shadow" data-transition = "turn">功能1-取得JSON資料</a>
         <a href="#pageF2" class="ui-btn ui-corner-all ui-shadow" data-transition = "flip">功能2-取得定位位置</a>
         <a href="#pageF3" class="ui-btn ui-corner-all ui-shadow" data-transition = "flow">功能3-標註JSON位置</a>
@@ -86,10 +82,6 @@
         <a href="#pageF6" class="ui-btn ui-corner-all ui-shadow" data-transition = "flow">功能6-標註JSON距離控制</a>
         <a href="#pageF7" class="ui-btn ui-corner-all ui-shadow" data-transition = "flow">功能7-Google地理資料庫</a>
         <a href="#pageF8" class="ui-btn ui-corner-all ui-shadow" data-transition = "flow">功能8-QR Code Scanner</a>
-    </div>
-
-    <div data-role="footer">
-        <h1>APP 課程案例</h1>
     </div>
 </div>
 
@@ -104,10 +96,6 @@
     <div data-role="main" class="ui-content">
         <p>JSON</p>
         <div id="pf1_d1"></div>
-    </div>
-
-    <div data-role="footer">
-        <h1>功課</h1>
     </div>
 </div>
 
@@ -125,10 +113,6 @@
         <div id="pf2_d2"></div>
         <a href="#" id="pf2_b1" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">取得位置</a>
     </div>
-
-    <div data-role="footer">
-        <h1>功課</h1>
-    </div>
 </div>
 
 <!-- 這是 pageF3 功能3-標記JOSN位置 -->
@@ -144,10 +128,6 @@
         <div id="pf3_d1"></div>
         <div id="pf3_d2"></div>
         <a href="#" id="pf3_b1" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">標註JSON資料</a>
-    </div>
-
-    <div data-role="footer">
-        <h1>功課</h1>
     </div>
 </div>
 
@@ -165,10 +145,6 @@
         <div id="pf4_d2"></div>
         <a href="#" id="pf4_b1" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">標註JSON資料</a>
     </div>
-
-    <div data-role="footer">
-        <h1>功課</h1>
-    </div>
 </div>
 
 <!-- 這是 pageF5 功能5-標註JSON數量呈現 -->
@@ -184,10 +160,6 @@
         <div id="pf5_d1"></div>
         <div id="pf5_d2"></div>
         <a href="#" id="pf5_b1" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">標註JSON資料</a>
-    </div>
-
-    <div data-role="footer">
-        <h1>功課</h1>
     </div>
 </div>
 
@@ -207,10 +179,6 @@
         <div id="pf6_d1"></div>
         <div id="pf6_d2"></div>
     </div>
-
-    <div data-role="footer">
-        <h1>功課</h1>
-    </div>
 </div>
 
 <!-- 這是 pageF7 功能7-Google地理資料庫 -->
@@ -228,10 +196,6 @@
         <a href="#" id="pf7_b1" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">取得Google地理資料庫</a>
         <div id="pf7_d1"></div>
         <div id="pf7_d2"></div>
-    </div>
-
-    <div data-role="footer">
-        <h1>功課</h1>
     </div>
 </div>
 
@@ -267,10 +231,6 @@
         	<video id="preview"></video>
       	</div>
       	</div>
-    </div>
-    
-    <div data-role="footer">
-        <h1>功課</h1>
     </div>
 </div>
 
